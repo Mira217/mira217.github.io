@@ -5,5 +5,24 @@ h2 {
 p {
 	color: black;
 	cursor: pointer;
-	font-size: 120%;
+	font-size: 100%;
+}
+.coolTitle{
+	text-align: center;
+  font-family: 'Oswald', Helvetica, sans-serif;
+  font-size: 60px;
+/*transform: skewY(-10deg);*/
+  letter-spacing: 2px;
+  word-spacing: -8px;
+  color: darkblue;
+  text-shadow: 
+    -1px -1px 0 gold,
+    -2px -2px 0 dodgerblue,
+    -3px -3px 0 deepskyblue,
+    -4px -4px 0 deepskyblue,
+    -5px -5px 0 lightskyblue,
+    -6px -6px 0 lightskyblue,
+    -7px -7px 0 lightblue,
+    -8px -8px 0 lightblue,
+    -20px 20px 40px dimgrey
 }
