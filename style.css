@@ -1,14 +1,25 @@
-
+body {
+ background-image: url("pictures/background6.png");
+ background-size: 220px 1300px;
+ /*background-repeat: no-repeat;*/
+ margin: 30px;
+ background-attachment: fixed;
+}
+h1 {
+  color: dodgerblue;
+}
 h2 {
 	color: darkred;
 }
 p {
-	color: black;
+	color: lightyellow;
 	cursor: pointer;
-	font-size: 100%;
+	font-size: 110%;
+  text-align: justify;
+  margin: 30px;
 }
 .coolTitle{
-	text-align: center;
+  text-align: center;
   font-family: 'Oswald', Helvetica, sans-serif;
   font-size: 60px;
 /*transform: skewY(-10deg);*/
@@ -25,4 +36,13 @@ p {
     -7px -7px 0 lightblue,
     -8px -8px 0 lightblue,
     -20px 20px 40px dimgrey
+}
+table{
+  margin: 30px;
+  color: lightyellow;
+}
+
+h3{
+  margin: 30px;
+  color: lightyellow;
 }
