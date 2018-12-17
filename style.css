@@ -1,20 +1,22 @@
 body {
- background-image: url(https://i.imgur.com/zurK1Ph.png);
+ background-image: url("https://i.imgur.com/zurK1Ph.png");
  background-size: 220px 1300px;
  /*background-repeat: no-repeat;*/
  margin: 30px;
  background-attachment: fixed;
 }
 h1 {
-  color: dodgerblue;
+  color: coral;
+  margin: 30px;
+  font-size: 300%;
 }
 h2 {
-	color: darkred;
+	color: coral;
 }
 p {
 	color: lightyellow;
 	cursor: pointer;
-	font-size: 110%;
+	font-size: 100%;
   text-align: justify;
   margin: 30px;
 }
@@ -25,16 +27,16 @@ p {
 /*transform: skewY(-10deg);*/
   letter-spacing: 2px;
   word-spacing: -8px;
-  color: darkblue;
+  color: orangered;
   text-shadow: 
-    -1px -1px 0 gold,
-    -2px -2px 0 dodgerblue,
-    -3px -3px 0 deepskyblue,
-    -4px -4px 0 deepskyblue,
-    -5px -5px 0 lightskyblue,
-    -6px -6px 0 lightskyblue,
-    -7px -7px 0 lightblue,
-    -8px -8px 0 lightblue,
+    -1px -1px 0 black,
+    -2px -2px 0 ivory,
+    -3px -3px 0 ivory,
+    -4px -4px 0 ivory,
+    -5px -5px 0 ivory,
+    -6px -6px 0 ivory,
+    -7px -7px 0 ivory,
+    -8px -8px 0 ivory,
     -20px 20px 40px dimgrey
 }
 table{
@@ -44,5 +46,19 @@ table{
 
 h3{
   margin: 30px;
-  color: lightyellow;
+  color: coral;
 }
+li{
+  color: lightyellow;
+  font-weight: bold;
+}
+table{
+  color: snow;
+}
+
+parabegin{
+  font-size: 100%;
+  color: coral;
+  font-weight: bold;
+  text-align: justify;
+ }
