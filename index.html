@@ -1,90 +1,75 @@
-<!DOCTYPE html>
-<html>
-<!-- link to style file, css-->
-<link rel="stylesheet" type = "text/css" href="style.css">
-	<head>
-		<title> About our games and tests I will remove this line </title>
-		<link rel="stylesheet" type = "text/css" href="animate.css">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
+<!DOCTYPE html><html class=''>
+<head>
+    <meta charset='UTF-8'>
+    <meta name="robots" content="noindex">
+    <title>The Experiment Factory: Digit Span</title>
+    
+<link rel='stylesheet' type='text/css' href='jspsych.css'>
+<link rel='stylesheet' type='text/css' href='default_style.css'>
+<link rel='stylesheet' type='text/css' href='style.css'>
+</head>
 
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-}
-
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.topnav a.active {
-  background-color: #4CAF50;
-  color: white;
-}
-</style>
 <body>
+<script src='js/jquery.min.js'></script>
+<script src='js/math.min.js'></script>
+<script src='js/jspsych/jspsych.js'></script>
+<script src='js/jspsych/plugins/jspsych-text.js'></script>
+<script src='js/jspsych/poldrack_plugins/jspsych-poldrack-text.js'></script>
+<script src='js/jspsych/poldrack_plugins/jspsych-poldrack-instructions.js'></script>
+<script src='js/jspsych/poldrack_plugins/jspsych-attention-check.js'></script>
+<script src='js/jspsych/poldrack_plugins/jspsych-poldrack-multi-stim-multi-response.js'></script>
+<script src='js/jspsych/poldrack_plugins/jspsych-poldrack-single-stim.js'></script>
+<script src='js/jspsych/plugins/jspsych-survey-text.js'></script>
+<script src='js/jspsych/poldrack_plugins/jspsych-single-stim-button.js'></script>
+<script src='js/jspsych/poldrack_plugins/poldrack_utils.js'></script>
+<script src='experiment.js'></script>
 
-<div class="topnav">
-  <a href="index.html">Project information</a>
-  <a href="cognitive tests.html">Cognitive tests</a>
-  <a href="public goods.html">Public goods game</a>
-  <a href="https://mysurvey.nus.edu.sg/EFM/se/543BE5C2729DC5FE" target="_blank">Discreet choice experiment</a>
-</div>
+
+<script>
+$( document ).ready(function() {
+
+    jsPsych.init({
+             timeline: digit_span_experiment,
+             display_element: "getDisplayElement",
+             fullscreen: true,
+             on_trial_finish: function(data){
+               addID('digit-span')
+             },
+
+             on_finish: function(data){
+
+                 // Serialize the data
+                 var promise = new Promise(function(resolve, reject) {
+                     var data = jsPsych.data.dataAsJSON();
+                     resolve(data);
+                 })
+
+                 promise.then(function(data) {
+
+
+                     $.ajax({
+                         type: "POST",
+                         url: '/save',
+                         data: { "data": data },
+                         success: function(){ document.location = "/next" },
+                         dataType: "application/json",
+
+                         // Endpoint not running, local save
+                         error: function(err) {
+
+                             if (err.status == 200){
+                                 document.location = "/next";
+                             } else {
+                                 // If error, assue local save
+                                 jsPsych.data.localSave('digit-span_results.csv', 'csv');
+                             }
+                         }
+                     });
+                 })
+             }
+
+      });
+});
+</script>
 </body>
-
-
-	<body>
-	
-		<h1 class="animated slideInRight"> Introduction to our research </h1>
-
-		<p> <parabegin> Many of the global dilemma is largely shaped by unsustainable decision-making from all levels</parabegin>, from individual consumers to probably governments. As a result, humankind is facing a multitude of environmental problems, from depletion of natural resources, unprecedented species extinction rates to emergence of non-communicable health issues. Especially in urban areas where the environmental footprints has shown to be highest, people constantly face stress and are detached from the environmental repercussions of their decisions and thus are prone to make decisions detrimental to their own well-being as well as the public good. </p>
-		<p> <parabegin> A large body of research has shown association of exposure to nature and human wellbeing</parabegin>. Fleeting nature exposure in various forms: visually via viewing pictures or videos of natural landscapes,  via nature walks have shown to reduce stress and lift mood. Chronic exposure to nature, as measured by greenness level of the place where the subjects live have also been proven to associate with lower stress levels. Such positive impact can be achieved via physiological (such as dues to increased exercise) or psychological (the biophilia hypothesis). In addition to state level impacts, nature exposure can also promote cooperative decision-making and result in environmentally sustainable behaviour in a lab simulation.</p>
-		<p> <parabegin> Singapore is a highly urbanized city </parabegin>, being the third densely populated country in the world  with no hinterland. As it strives to realize the “City in a garden” vision, Singapore has battled over urban development and conservation of natural landscape. Singapore suffers from many health concerns that are prevalent in any cities: obesity, high blood pressure, depression to name a few. However, research suggests that exposure to nature can mitigate such conditions. Despite massive greening movement, more than 99% country’s natural habitats have been cleared by 1990 and as a result most of the general public in Singapore have grown up with their perceptions of nature largely shaped by exposure to manicured landscapes.</p> 
-		<p>	Understanding public preference for urban green space might help in designing landscape that could maximize public well-being as well as streamlining educational campaigns on environmental awareness.</p>
-		<p> In this study, we aim to study the psychological impacts of nature exposure to human. You will participate in one or some of the fun games below to help us gain insights into the psychological impacts of nature exposure in Singapore.</p>
-		<p class="animated infinite flash slower" style="color:lightblue">  You will be rewarded with a token proportionate to your performance in one of the games you play!</p>
-		
-		<h3> About us </h3>
-		<p> We are scientists at <a href="http://blog.nus.edu.sg/bioeconlab/" target="_blank" style="color:coral"> the BioEcon Lab</a>, Department of Biological Sciences, National University of Singapore.</p>
-		<p>This research is part of the project "Green capital and human wellbeing: Enhancing the nature experience through experimental analysis of causal pathways between biodiversity and subjective wellbeing in Singapore" funded by the National Parks Board (NParks) and conducted in collaboration with the Centre for Biodiversity and Conservation Science, University of Queensland.</p> 
-
-		<h1 class="animated slideInLeft">Your participation</h1>
-		<p> If you would you like to take part in the game, please read the following Participant Information Sheet and provide your consent </p>
-<ol>
-		<li>Purpose of the study</li>
-		<p>	To understand public preference for urban green space as well as psychological impacts of nature exposure in order to help in designing landscape that could maximize public well-being as well as streamlining educational campaigns on environmental awareness.</p>
-		<li>Participation and withdrawal</li>
-		<p>Participation in this study is completely voluntary, and you may withdraw at any time without any negative consequences or penalty. If you wish to withdraw, simply stop completing the survey. Any data that is collected up to that point will not be used in the study. </p>
-		<li>Confidentiality and security of data</li>
-		<p>All data collected in this study will be stored confidentially and only members of the research team will have access to the data. Because all data is non-identifiable, responses cannot be linked to any individual participant. Data will be reported as group summaries and will only be used for the specific research purposes of this study. </p>	
-		<li>Risks</li>
-		<p>Participation in this study should involve no physical or mental discomfort, and no risks beyond those of everyday living. However, should you feel uncomfortable answering any question, you may withdraw from participating in the study without any penalty or negative consequences.</p>
-		<li>Whom should I call if I have any questions or problems?</li>
-		<p>This study adheres to the Guidelines of the ethical review process of The National University of Singapore. You have the option to discuss your participation in this study with project staff (Le – contactable on +65 8598 1916 or dbsntpl@nus.edu.sg).</p> 
-		<p>If you would like to learn about the outcomes of this study, please email Le (dbsntpl@nus.edu.sg) for a summary of the study and findings. </p>
-		<p> For an independent opinion regarding the research and the rights of research participants, you may contact a staff member of the National University of Singapore Institutional Review Board (Attn: Dr Chan Tuck Wai, at telephone (+65) 6516 1234 or email at irb@nus.edu.sg).</p>	
-			
-	</ol>
-		<h3> Your consent </h3>
-		<p> Your participation is voluntary and you can choose to withdraw at any point. You will not be asked to give your name so any information you provide is completely anonymous.Should you wish to clarify any aspect of your potential participation or need more information you can also speak directly to a lead researcher before agreeing or disagreeing to take part in the evaluation. By participating in our research, you declare that: </p> 
-		<ul>
-			<li> I understand the purpose of this research project and the nature of my involvement </li>
-			<li> I have read the information provided about the My Life, My City research project and understand the nature of my involvement. I understand any information I provide is completely confidential. I agree to take part and understand I can withdraw at any time without penalty or negative consequences. </li>
-			<li> I am over 18 years of age </li><br>
-		</ul>
-	</body>
 </html>

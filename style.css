@@ -1,64 +1,62 @@
-body {
- background-image: url("https://i.imgur.com/J2v3FYh.jpg");
- background-size: 220px 1300px;
- /*background-repeat: no-repeat;*/
- margin: 30px;
- background-attachment: fixed;
-}
-h1 {
-  color: coral;
-  margin: 30px;
-  font-size: 300%;
-}
-h2 {
-	color: coral;
-}
-p {
-	color: lightyellow;
-	cursor: pointer;
-	font-size: 100%;
-  text-align: justify;
-  margin: 30px;
-}
-.coolTitle{
-  text-align: center;
-  font-family: 'Oswald', Helvetica, sans-serif;
-  font-size: 60px;
-/*transform: skewY(-10deg);*/
-  letter-spacing: 2px;
-  word-spacing: -8px;
-  color: orangered;
-  text-shadow: 
-    -1px -1px 0 black,
-    -2px -2px 0 ivory,
-    -3px -3px 0 ivory,
-    -4px -4px 0 ivory,
-    -5px -5px 0 ivory,
-    -6px -6px 0 ivory,
-    -7px -7px 0 ivory,
-    -8px -8px 0 ivory,
-    -20px 20px 40px dimgrey
-}
-table{
-  margin: 30px;
-  color: lightyellow;
+.digit-span-text {
+	text-align:center;
+	font-size: 80px;
+	position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
-h3{
-  margin: 30px;
-  color: coral;
-}
-li{
-  color: lightyellow;
-  font-weight: bold;
-}
-table{
-  color: snow;
+
+/* css for numpad */
+.square {
+    float:left;
+    position: relative;
+    width: 30%;
+    height: 30%; /* = width for a 1:1 aspect ratio */
+    margin:1.66%;
+    background-color:#505050;
+    overflow:hidden;
+    color: #fff;
+    border-radius:15px;
 }
 
-parabegin{
-  font-size: 100%;
-  color: coral;
-  font-weight: bold;
-  text-align: justify;
- }
+.submit_button, .clear_button {
+    float:left;
+    position: relative;
+    width: 47%;
+    height: 15%; /* = width for a 1:1 aspect ratio */
+    margin:1.5%;
+    background-color:#505050;
+    overflow:hidden;
+    color: #fff;
+    border-radius:15px;
+    font-size: 20px;
+}
+
+.square:hover, .submit_button:hover, .clear_button:hover {
+	color: red;
+}
+
+.square:active, .submit_button:active, .clear_button:active {
+	background-color: black;
+}
+
+.numbers{
+    font-weight:900;
+    text-align: center;
+    font-size: 50px;
+    position: relative;
+    top: 50%; 
+}
+
+.numbox {
+  width:30vw;
+  height: 30vw;
+  position:absolute;
+  top:50%;
+  left:50%;
+  margin-right:-50%;
+  transform: translate(-50%,-50%);
+}
